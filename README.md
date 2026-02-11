@@ -309,7 +309,7 @@ Recommended deployment platform: Vercel
 
 ## License
 
-Proprietary - © 2025 ANVL Finance LLC. All Rights Reserved.
+Proprietary - © 2026 ANVL Finance LLC. All Rights Reserved.
 
 ## Company Information
 

@@ -237,7 +237,7 @@ export default function WhitepaperPage() {
             </div>
           </div>
           <div className="border-t border-gray-800 pt-8 text-center text-sm text-gray-400">
-            <p>© 2025 ANVL Finance LLC. All Rights Reserved.</p>
+            <p>© 2026 ANVL Finance LLC. All Rights Reserved.</p>
             <p className="mt-2">Company registered in Wyoming, USA.</p>
           </div>
         </div>
