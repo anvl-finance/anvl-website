@@ -1,27 +1,49 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-type NavItem = { label: string; href: string; isActive?: (pathname: string, view?: string | null) => boolean };
+type Variant = 'lenders' | 'investors';
+type NavItem = { label: string; href: string };
 
 export default function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const view = searchParams.get('view'); // e.g. "investors"
 
-  const nav: NavItem[] = [
-    { label: 'Home', href: '/', isActive: (p) => p === '/' },
-    { label: 'For Lenders', href: '/?view=lenders', isActive: (p, v) => p === '/' && (!v || v === 'lenders') },
-    { label: 'For Investors', href: '/?view=investors', isActive: (p, v) => p === '/' && v === 'investors' },
-    { label: 'Roadmap', href: '/roadmap', isActive: (p) => p === '/roadmap' },
-    { label: 'Team', href: '/team', isActive: (p) => p === '/team' },
-    { label: 'FAQ', href: '/faq', isActive: (p) => p === '/faq' },
-  ];
+  // Read ?view=... on the client only (avoids useSearchParams prerender bailout)
+  const [view, setView] = useState<string | null>(null);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    setView(params.get('view'));
+  }, [pathname]); // re-read when route changes
+
+  const variant: Variant = view === 'investors' ? 'investors' : 'lenders';
+
+  const nav: NavItem[] = useMemo(
+    () => [
+      { label: 'Home', href: '/' },
+      { label: 'For Lenders', href: '/?view=lenders' },
+      { label: 'For Investors', href: '/?view=investors' },
+      { label: 'Roadmap', href: '/roadmap' },
+      { label: 'Team', href: '/team' },
+      { label: 'FAQ', href: '/faq' },
+    ],
+    []
+  );
+
+  const isActive = (label: string) => {
+    if (label === 'Home') return pathname === '/' && !view;
+    if (label === 'For Lenders') return pathname === '/' && variant === 'lenders';
+    if (label === 'For Investors') return pathname === '/' && variant === 'investors';
+    if (label === 'Roadmap') return pathname === '/roadmap';
+    if (label === 'Team') return pathname === '/team';
+    if (label === 'FAQ') return pathname === '/faq';
+    return false;
+  };
 
   const linkClass = (active: boolean) =>
     active ? 'text-sm text-white' : 'text-sm text-[#AAB1B9] hover:text-white transition-colors';
@@ -37,7 +59,7 @@ export default function SiteHeader() {
           {/* Desktop */}
           <nav className="hidden md:flex items-center space-x-8">
             {nav.map((item) => {
-              const active = item.isActive ? item.isActive(pathname, view) : false;
+              const active = isActive(item.label);
               return (
                 <Link key={item.label} href={item.href} className={linkClass(active)}>
                   {item.label}
@@ -68,12 +90,16 @@ export default function SiteHeader() {
         <div className="md:hidden border-t border-white/10 bg-[#0D1B2A]">
           <div className="px-6 py-4 space-y-3">
             {nav.map((item) => {
-              const active = item.isActive ? item.isActive(pathname, view) : false;
+              const active = isActive(item.label);
               return (
                 <Link
                   key={item.label}
                   href={item.href}
-                  className={active ? 'block text-sm font-medium text-white' : 'block text-sm font-medium text-[#AAB1B9]'}
+                  className={
+                    active
+                      ? 'block text-sm font-medium text-white'
+                      : 'block text-sm font-medium text-[#AAB1B9]'
+                  }
                   onClick={() => setMobileOpen(false)}
                 >
                   {item.label}
