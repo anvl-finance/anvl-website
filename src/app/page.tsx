@@ -1,8 +1,7 @@
 'use client';
 
-import { useMemo, useState } from 'react';
-import Link from 'next/link';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useEffect, useMemo, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { ChevronRight, Info } from 'lucide-react';
 import { toast } from 'sonner';
 
@@ -38,8 +37,13 @@ function formatCurrency(n: number) {
   });
 }
 
-function HomePageInner({ variant }: { variant: Variant }) {
-  const router = useRouter();
+function HomePageInner({
+  variant,
+  toggleVariant,
+}: {
+  variant: Variant;
+  toggleVariant: (v: Variant) => void;
+}) {
 
   // ROI Calculator (Lender-focused)
   const [calcOpen, setCalcOpen] = useState(false);
@@ -72,12 +76,6 @@ function HomePageInner({ variant }: { variant: Variant }) {
     accredited: false,
     message: '',
   });
-
-  const toggleVariant = (next: Variant) => {
-    // Use Next router so the App Router updates searchParams properly.
-    if (next === 'investors') router.push('/?view=investors');
-    else router.push('/');
-  };
 
   const lenderRoi = useMemo(() => {
     const anvlAnnualCost = avgUnitsOnBook * anvlCostPerAssetPerMonth * 12;
@@ -689,10 +687,26 @@ function HomePageInner({ variant }: { variant: Variant }) {
 }
 
 export default function HomePage() {
-  const searchParams = useSearchParams();
-  const view = searchParams.get('view');
-  const variant: Variant = view === 'investors' ? 'investors' : 'lenders';
+  const router = useRouter();
+  const [variant, setVariant] = useState<Variant>('lenders');
 
-  // Keyed child forces a true remount when ?view changes
-  return <HomePageInner key={variant} variant={variant} />;
+  // read querystring client-side only
+  useEffect(() => {
+    const read = () => {
+      const params = new URLSearchParams(window.location.search);
+      setVariant(params.get('view') === 'investors' ? 'investors' : 'lenders');
+    };
+
+    read(); // initial
+    window.addEventListener('popstate', read); // back/forward
+    return () => window.removeEventListener('popstate', read);
+  }, []);
+
+  const toggleVariant = (next: Variant) => {
+    if (next === 'investors') router.push('/?view=investors');
+    else router.push('/'); // or router.push('/') if you prefer
+    setVariant(next); // keeps UI instant even before popstate
+  };
+
+  return <HomePageInner variant={variant} toggleVariant={toggleVariant} />;
 }
