@@ -1,6 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Linkedin, Mail } from 'lucide-react';
+import {
+  Linkedin,
+  Mail,
+  Twitter,
+  Github,
+  Rss,
+  Music2,
+} from 'lucide-react';
 
 export default function SiteFooter() {
   return (
@@ -31,7 +38,8 @@ export default function SiteFooter() {
           </a>
 
           {/* Right: Socials */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 flex-wrap">
+            {/* LinkedIn */}
             <a
               href="https://www.linkedin.com/company/anvl-labs/"
               target="_blank"
@@ -42,6 +50,51 @@ export default function SiteFooter() {
               <Linkedin className="h-5 w-5" />
             </a>
 
+            {/* X (Twitter) */}
+            <a
+              href="https://x.com/AnvlFinance"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#AAB1B9] hover:text-white transition-colors"
+              aria-label="ANVL on X"
+            >
+              <Twitter className="h-5 w-5" />
+            </a>
+
+            {/* TikTok */}
+            <a
+              href="https://www.tiktok.com/@anvl.finance"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#AAB1B9] hover:text-white transition-colors"
+              aria-label="ANVL on TikTok"
+            >
+              <Music2 className="h-5 w-5" />
+            </a>
+
+            {/* Substack */}
+            <a
+              href="https://substack.com/@anvlfinance"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#AAB1B9] hover:text-white transition-colors"
+              aria-label="ANVL on Substack"
+            >
+              <Rss className="h-5 w-5" />
+            </a>
+
+            {/* GitHub */}
+            <a
+              href="https://github.com/anvlfinance"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#AAB1B9] hover:text-white transition-colors"
+              aria-label="ANVL on GitHub"
+            >
+              <Github className="h-5 w-5" />
+            </a>
+
+            {/* Email */}
             <a
               href="mailto:info@anvl.ai"
               className="text-[#AAB1B9] hover:text-white transition-colors"
@@ -50,6 +103,7 @@ export default function SiteFooter() {
               <Mail className="h-5 w-5" />
             </a>
 
+            {/* Contact Page */}
             <Link
               href="/contact"
               className="text-sm text-[#E4312D] hover:underline"
