@@ -127,8 +127,8 @@ export default function RoadmapPage() {
                 <div className="text-sm font-semibold text-[#AAB1B9]">Foundation year</div>
               </div>
               <div className="bg-white/5 border border-white/10 rounded-lg p-6">
-                <div className="text-3xl font-semibold text-[#E4312D] mb-2">20+</div>
-                <div className="text-sm font-semibold text-[#AAB1B9]">Initial dealer partners</div>
+                <div className="text-3xl font-semibold text-[#E4312D] mb-2">2+</div>
+                <div className="text-sm font-semibold text-[#AAB1B9]">Initial lenders</div>
               </div>
               <div className="bg-white/5 border border-white/10 rounded-lg p-6">
                 <div className="text-3xl font-semibold text-[#E4312D] mb-2">2027</div>
