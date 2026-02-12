@@ -21,8 +21,8 @@ export default function RoadmapPage() {
     {
       year: '2026',
       quarter: 'Q2',
-      title: 'Dealer POC',
-      deliverable: 'Live verification with partner dealers',
+      title: 'Lender POC',
+      deliverable: 'Controlled POC',
       description:
         'Onboard first dealer cohort (20+) with check-in, BLE monitoring, exceptions, and lender visibility. Establish KPI baseline and reporting.',
       status: 'upcoming',
