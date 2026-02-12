@@ -13,40 +13,45 @@ export default function RoadmapPage() {
       year: '2026',
       quarter: 'Q1',
       title: 'Protocol MVP',
-      deliverable: 'Vara-based pilot system operational',
-      description: 'Launch of pilot lending contracts and verified tagging system with initial dealer partners.',
+      deliverable: 'Vara-based verification MVP operational',
+      description:
+        'Core tagging + on-chain commitments + lender dashboard baseline (assets, alerts, audit trail) ready for controlled POC onboarding.',
       status: 'upcoming',
     },
     {
       year: '2026',
       quarter: 'Q2',
-      title: 'Dealer Pilots',
-      deliverable: 'Active verification with partner dealers',
-      description: 'Onboard first 20+ independent dealers with live floorplans and real-time verification.',
+      title: 'Dealer POC',
+      deliverable: 'Live verification with partner dealers',
+      description:
+        'Onboard first dealer cohort (20+) with check-in, BLE monitoring, exceptions, and lender visibility. Establish KPI baseline and reporting.',
       status: 'upcoming',
     },
     {
       year: '2026',
       quarter: 'Q3',
-      title: 'Compliance Readiness',
-      deliverable: 'Legal and audit certification',
-      description: 'Complete third-party audit and readiness for digital securities framework.',
+      title: 'Controls Readiness',
+      deliverable: 'Operational controls + auditability hardening',
+      description:
+        'Standardize evidence packs, exception workflows, reporting, and lender policy alignment. Optional third-party readiness review.',
       status: 'upcoming',
     },
     {
       year: '2026',
       quarter: 'Q4',
-      title: 'Platform Launch',
-      deliverable: 'Marketplace for tokenized floorplan financing',
-      description: "Public rollout of ANVL's floorplan financing marketplace with full investor access.",
+      title: 'Lender Pilot',
+      deliverable: 'Operational pilot with lender workflows',
+      description:
+        'Run production pilot with lender(s): verification SLAs, exception handling, audit cadence, and portfolio reporting. Expand dealer coverage and harden reliability.',
       status: 'upcoming',
     },
     {
       year: '2027',
       quarter: 'Q1–Q4',
       title: 'Scaling Phase',
-      deliverable: 'Expansion, multi-region integrations, institutional partnerships',
-      description: 'Regional scaling, strategic partnerships, and enhanced data integrations.',
+      deliverable: 'Expansion, integrations, regional rollout',
+      description:
+        'Scale dealer coverage, add integrations, and expand lender adoption as KPIs stabilize. Layer in advanced analytics and automation.',
       status: 'upcoming',
     },
   ];
