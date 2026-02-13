@@ -28,25 +28,46 @@ export default function ContactPage() {
     e.preventDefault();
 
     if (!formData.privacyAccepted) {
-      toast.error('Please accept the privacy policy');
+      toast.error("Please accept the privacy policy");
       return;
     }
 
     setIsSubmitting(true);
 
-    setTimeout(() => {
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: formData.fullName,
+          email: formData.email,
+          message: [
+            `Company: ${formData.company || ""}`,
+            `Role: ${formData.role || ""}`,
+            `Interest: ${formData.interest || ""}`,
+            "",
+            formData.message || "",
+          ].join("\n"),
+        }),
+      });
+
+      if (!res.ok) throw new Error("Failed");
+
       toast.success("Thank you. We'll be in touch shortly.");
       setFormData({
-        fullName: '',
-        email: '',
-        company: '',
-        role: '',
-        interest: '',
-        message: '',
-        privacyAccepted: false
+        fullName: "",
+        email: "",
+        company: "",
+        role: "",
+        interest: "",
+        message: "",
+        privacyAccepted: false,
       });
+    } catch (err) {
+      toast.error("Something went wrong. Please try again.");
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   return (
@@ -185,8 +206,8 @@ export default function ContactPage() {
           <div className="bg-white/5 border border-white/10 rounded-lg p-6 text-center">
             <Mail className="h-6 w-6 text-[#E4312D] mx-auto mb-3" />
             <h3 className="font-semibold mb-2">Email</h3>
-            <a href="mailto:info@anvl.finance" className="text-[#C9CDD3] hover:text-white">
-              info@anvl.finance
+            <a href="mailto:contact@anvllabs.io" className="text-[#C9CDD3] hover:text-white">
+              contact@anvllabs.io
             </a>
           </div>
 

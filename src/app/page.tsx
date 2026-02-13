@@ -79,25 +79,31 @@ export default function HomePage() {
     expectedLossAvoidancePct,
   ]);
 
-  const handleLenderSubmit = (e: React.FormEvent) => {
+  const handleLenderSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     if (!lenderForm.consent) {
-      toast.error('Please acknowledge the privacy policy.');
+      toast.error("Please acknowledge the privacy policy.");
       return;
     }
-    toast.success("Request submitted! We'll reach out within 1 business day.");
-    setLenderForm({
-      institution: '',
-      contactName: '',
-      role: '',
-      email: '',
-      phone: '',
-      geography: '',
-      portfolioSize: '',
-      lms: '',
-      message: '',
-      consent: false,
-    });
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: lenderForm.contactName,
+          email: lenderForm.email,
+          message: lenderForm.message,
+        }),
+      });
+
+      if (!res.ok) throw new Error("Failed");
+
+      toast.success("Request submitted! We'll reach out within 1 business day.");
+    } catch (err) {
+      toast.error("Something went wrong. Please try again.");
+    }
   };
 
   return (
