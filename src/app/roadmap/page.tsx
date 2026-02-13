@@ -24,7 +24,7 @@ export default function RoadmapPage() {
       title: 'Lender POC',
       deliverable: 'Controlled POC',
       description:
-        'Onboard first dealer cohort (20+) with check-in, BLE monitoring, exceptions, and lender visibility. Establish KPI baseline and reporting.',
+        'Onboard first lender with check-in, BLE monitoring, exceptions, and lender visibility. Establish KPI baseline and reporting.',
       status: 'upcoming',
     },
     {
