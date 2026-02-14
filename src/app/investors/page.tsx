@@ -30,22 +30,54 @@ function InvestorsPage() {
     message: '',
   });
 
-  const handleInvestorSubmit = (e: React.FormEvent) => {
+  const handleInvestorSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     if (!investorForm.accredited) {
-      toast.error('Please confirm accredited investor status.');
+      toast.error("Please confirm accredited investor status.");
       return;
     }
-    toast.success("Request submitted! We'll send materials within 48 hours.");
-    setInvestorForm({
-      firmName: '',
-      role: '',
-      email: '',
-      aumBracket: '',
-      jurisdiction: '',
-      accredited: false,
-      message: '',
-    });
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: `${investorForm.firmName} (${investorForm.role})`,
+          email: investorForm.email,
+          message: [
+            "Investor materials request",
+            "",
+            `Firm: ${investorForm.firmName}`,
+            `Role: ${investorForm.role}`,
+            `Email: ${investorForm.email}`,
+            `AUM: ${investorForm.aumBracket}`,
+            `Jurisdiction: ${investorForm.jurisdiction}`,
+            `Accredited: ${investorForm.accredited ? "Yes" : "No"}`,
+            "",
+            investorForm.message ? `Message: ${investorForm.message}` : "",
+          ]
+            .filter(Boolean)
+            .join("\n"),
+        }),
+      });
+
+      if (!res.ok) throw new Error("Failed");
+
+      toast.success("Request submitted! We'll send materials within 48 hours.");
+
+      setInvestorForm({
+        firmName: "",
+        role: "",
+        email: "",
+        aumBracket: "",
+        jurisdiction: "",
+        accredited: false,
+        message: "",
+      });
+    } catch (err) {
+      toast.error("Something went wrong. Please try again.");
+    }
   };
 
   return (
