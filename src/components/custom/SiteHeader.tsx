@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -34,10 +35,15 @@ export default function SiteHeader() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#0D1B2A] border-b border-white/10">
       <div className="max-w-[1160px] mx-auto px-6">
         <div className="flex justify-between items-center h-16">
-          <Link href="/" className="text-xl font-semibold text-white">
-            ANVL<span className="text-[#E4312D]">.</span>
+          <Link href="/" className="flex items-center">
+            <Image
+                src="/anvl-logo.svg"
+                alt="ANVL Logo"
+                width={140}
+                height={40}
+                priority
+            />
           </Link>
-
           {/* Desktop */}
           <nav className="hidden md:flex items-center space-x-8">
             {nav.map((item) => {

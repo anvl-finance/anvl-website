@@ -52,7 +52,7 @@ export default function SiteFooter() {
 
             {/* X (Twitter) */}
             <a
-              href="https://x.com/AnvlFinance"
+              href="https://x.com/anvl_labs"
               target="_blank"
               rel="noopener noreferrer"
               className="text-[#AAB1B9] hover:text-white transition-colors"
