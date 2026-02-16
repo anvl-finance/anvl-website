@@ -107,7 +107,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0D1B2A] text-white">
+    <div className="min-h-screen bg-background text-foreground">
       {/* Shared header */}
       <SiteHeader />
 

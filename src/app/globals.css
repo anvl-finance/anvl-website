@@ -5,7 +5,7 @@
 @layer base {
   :root {
     /* ANVL Dark Theme */
-    --background: 211 53% 11%;          /* #0D1B2A */
+    --background: 219 53% 16%;          /* #13213E */
     --foreground: 0 0% 98%;             /* near-white */
     --card: 211 45% 14%;                /* slightly lighter than background */
     --card-foreground: 0 0% 98%;

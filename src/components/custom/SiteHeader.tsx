@@ -32,7 +32,7 @@ export default function SiteHeader() {
       : 'text-sm text-[#AAB1B9] hover:text-white transition-colors';
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#0D1B2A] border-b border-white/10">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-white/10">
       <div className="max-w-[1160px] mx-auto px-6">
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="flex items-center">
