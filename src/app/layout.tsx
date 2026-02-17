@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/react';
 import './globals.css';
 import ToasterProvider from '@/components/custom/ToasterProvider';
 
@@ -54,6 +55,7 @@ export default function RootLayout({
       <body className={`${inter.className} antialiased`}>
         {children}
         <ToasterProvider />
+        <Analytics />
       </body>
     </html>
   );
