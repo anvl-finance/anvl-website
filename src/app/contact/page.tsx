@@ -71,7 +71,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0D1B2A] text-white">
+    <div className="min-h-screen bg-background text-white">
       <SiteHeader />
 
       {/* Hero */}

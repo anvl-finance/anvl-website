@@ -6,58 +6,11 @@ import Link from 'next/link';
 import SiteHeader from '@/components/custom/SiteHeader';
 import SiteFooter from '@/components/custom/SiteFooter';
 import { Button } from '@/components/ui/button';
+import { roadmap } from '@/content/siteCopy';
 
 export default function RoadmapPage() {
-  const milestones = [
-    {
-      year: '2026',
-      quarter: 'Q1',
-      title: 'Protocol MVP',
-      deliverable: 'Vara-based verification MVP operational',
-      description:
-        'Core tagging + on-chain commitments + lender dashboard baseline (assets, alerts, audit trail) ready for controlled POC onboarding.',
-      status: 'upcoming',
-    },
-    {
-      year: '2026',
-      quarter: 'Q2',
-      title: 'Lender POC',
-      deliverable: 'Controlled POC',
-      description:
-        'Onboard first lender with check-in, BLE monitoring, exceptions, and lender visibility. Establish KPI baseline and reporting.',
-      status: 'upcoming',
-    },
-    {
-      year: '2026',
-      quarter: 'Q3',
-      title: 'Controls Readiness',
-      deliverable: 'Operational controls + auditability hardening',
-      description:
-        'Standardize evidence packs, exception workflows, reporting, and lender policy alignment. Optional third-party readiness review.',
-      status: 'upcoming',
-    },
-    {
-      year: '2026',
-      quarter: 'Q4',
-      title: 'Lender Pilot',
-      deliverable: 'Operational pilot with lender workflows',
-      description:
-        'Run production pilot with lender(s): verification SLAs, exception handling, audit cadence, and portfolio reporting. Expand dealer coverage and harden reliability.',
-      status: 'upcoming',
-    },
-    {
-      year: '2027',
-      quarter: 'Q1–Q4',
-      title: 'Scaling Phase',
-      deliverable: 'Expansion, integrations, regional rollout',
-      description:
-        'Scale dealer coverage, add integrations, and expand lender adoption as KPIs stabilize. Layer in advanced analytics and automation.',
-      status: 'upcoming',
-    },
-  ];
-
   return (
-    <div className="min-h-screen bg-[#0D1B2A] text-white">
+    <div className="min-h-screen text-white">
       <SiteHeader />
 
       {/* Hero */}
@@ -76,10 +29,10 @@ export default function RoadmapPage() {
       <section className="py-16 px-6">
         <div className="max-w-[1160px] mx-auto">
           <div className="space-y-8">
-            {milestones.map((milestone, index) => (
-              <div key={`${milestone.year}-${milestone.quarter}-${milestone.title}`} className="relative">
+            {roadmap.map((milestone, index) => (
+              <div key={`${milestone.quarter}-${milestone.title}`} className="relative">
                 {/* Timeline line */}
-                {index !== milestones.length - 1 && (
+                {index !== roadmap.length - 1 && (
                   <div className="absolute left-6 top-16 bottom-0 w-0.5 bg-white/10 hidden md:block" />
                 )}
 
@@ -96,12 +49,15 @@ export default function RoadmapPage() {
                     <div className="flex-1">
                       <div className="mb-4">
                         <div className="text-sm font-semibold text-[#E4312D] mb-1">
-                          {milestone.year} {milestone.quarter}
+                          {milestone.quarter}
                         </div>
                         <h3 className="text-2xl font-semibold text-white mb-2">{milestone.title}</h3>
-                        <p className="text-sm font-medium text-[#AAB1B9]">{milestone.deliverable}</p>
                       </div>
-                      <p className="text-[#C9CDD3] leading-relaxed">{milestone.description}</p>
+                      <ul className="space-y-2 text-[#C9CDD3] leading-relaxed">
+                        {milestone.bullets.map((bullet) => (
+                          <li key={bullet}>• {bullet}</li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
                 </div>

@@ -10,92 +10,26 @@ import SiteFooter from '@/components/custom/SiteFooter';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-
-type FAQItem = {
-  question: string;
-  answer: string;
-};
-
-type FAQSection = {
-  id: string;
-  title: string;
-  items: FAQItem[];
-};
+import { faqGroups } from '@/content/siteCopy';
 
 export default function FAQPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
   const [contactEmail, setContactEmail] = useState('');
 
-  const sections: FAQSection[] = [
-    {
-      id: 'overview',
-      title: 'Overview',
-      items: [
-        {
-          question: 'What is ANVL?',
-          answer:
-            'ANVL is a risk-tech and verification infrastructure layer for floorplan lenders. We provide cryptographic proof-of-presence for collateral, immutable audit trails, and continuous monitoring signals—without replacing your existing LMS, DMS, title workflows, or banking partners.',
-        },
-        {
-          question: 'Who is this for?',
-          answer:
-            'ANVL is built for institutional floorplan lenders, credit platforms, and capital partners who need better collateral visibility, tighter controls, and audit-grade reporting. We focus on reducing out-of-trust risk, operational drag, and information asymmetry in dealer inventory finance.',
-        },
-        {
-          question: 'Does this replace my LMS?',
-          answer:
-            'No. ANVL is designed to integrate with your current loan management and audit workflows. We act as a verification and evidence layer—delivering events, exceptions, and reporting via APIs and dashboards, while your LMS remains the system of record for lending operations.',
-        },
-      ],
-    },
-    {
-      id: 'investors',
-      title: 'Investors',
-      items: [
-        {
-          question: 'What do investors get exposure to?',
-          answer:
-            'Where applicable, investor participation relates to structured credit exposures tied to floorplan activity and collateral verification signals. ANVL’s role is to provide lender-grade monitoring, controls, and reporting that can support diligence and ongoing oversight.',
-        },
-        {
-          question: 'Is this an offer of securities?',
-          answer:
-            'No. This site is informational only and does not constitute an offer to sell or a solicitation to buy any security. Any offering, if and when it occurs, would be made only through definitive documentation and only to eligible parties under applicable exemptions and compliance requirements.',
-        },
-      ],
-    },
-    {
-      id: 'risk',
-      title: 'Risk & Compliance',
-      items: [
-        {
-          question: 'How is fraud mitigated?',
-          answer:
-            'ANVL uses layered controls including cryptographic challenge-response verification, replay protection, anomaly detection, and policy-driven exception workflows. These measures are designed to make falsified collateral attestations materially harder and easier to detect within lender operations.',
-        },
-        {
-          question: 'What data is collected?',
-          answer:
-            'ANVL collects the minimum data required to operate verification and reporting workflows: collateral identifiers (e.g., VIN or internal unit ID), verification event metadata (time, integrity proof, counter), and operational context needed for exceptions and audit artifacts. Access is permissioned and logged; sensitive data is minimized and protected through standard security controls.',
-        },
-      ],
-    },
-  ];
-
   const filteredSections = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
-    if (!q) return sections;
+    if (!q) return faqGroups;
 
-    return sections
+    return faqGroups
       .map((s) => ({
         ...s,
-        items: s.items.filter(
+        questions: s.questions.filter(
           (i) => i.question.toLowerCase().includes(q) || i.answer.toLowerCase().includes(q)
         ),
       }))
-      .filter((s) => s.items.length > 0);
-  }, [searchQuery, sections]);
+      .filter((s) => s.questions.length > 0);
+  }, [searchQuery]);
 
   const toggle = (key: string) => {
     setExpanded((prev) => {
@@ -117,7 +51,7 @@ export default function FAQPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0D1B2A] text-white">
+    <div className="min-h-screen text-white">
       <SiteHeader />
 
       {/* Hero */}
@@ -157,11 +91,11 @@ export default function FAQPage() {
           ) : (
             <div className="space-y-14">
               {filteredSections.map((section) => (
-                <div key={section.id} id={section.id}>
-                  <h2 className="text-2xl sm:text-3xl font-semibold mb-6">{section.title}</h2>
+                <div key={section.category}>
+                  <h2 className="text-2xl sm:text-3xl font-semibold mb-6">{section.category}</h2>
                   <div className="space-y-4">
-                    {section.items.map((item, idx) => {
-                      const key = `${section.id}-${idx}`;
+                    {section.questions.map((item, idx) => {
+                      const key = `${section.category}-${idx}`;
                       const isOpen = expanded.has(key);
 
                       return (

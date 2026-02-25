@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
+import { modules } from '@/content/siteCopy';
 import {
   Tooltip,
   TooltipContent,
@@ -116,7 +117,7 @@ export default function HomePage() {
         <div className="max-w-[1160px] mx-auto">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-semibold text-white mb-6 leading-[1.1]">
-              Floorplan risk, verified.
+              Floorplan. Simplified.
             </h1>
             <p className="text-lg sm:text-xl text-[#C9CDD3] mb-10 leading-relaxed max-w-3xl mx-auto">
               ANVL is a SaaS risk-tech and blockchain infrastructure layer for floorplan lenders:
@@ -340,6 +341,47 @@ export default function HomePage() {
                 </Dialog>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Three Modules */}
+      <section className="py-20 px-6">
+        <div className="max-w-[1160px] mx-auto">
+          <div className="text-center max-w-3xl mx-auto mb-10">
+            <h2 className="text-3xl sm:text-4xl font-semibold text-white mb-4">
+              Three Modules
+            </h2>
+            <p className="text-lg text-[#C9CDD3] leading-relaxed">
+              A modular platform that starts with verification and expands into
+              management and origination.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {modules.map((module) => (
+              <div
+                key={module.name}
+                className="bg-white/5 rounded-lg p-8 border border-white/10"
+              >
+                <p className="text-sm font-semibold text-[#E4312D] mb-2">
+                  {module.name}
+                </p>
+                <h3 className="text-2xl font-semibold text-white mb-2">
+                  {module.fullName}
+                </h3>
+                <p className="text-[#C9CDD3] mb-3">{module.tagline}</p>
+                <p className="text-sm text-[#AAB1B9] mb-5">{module.positioning}</p>
+                <p className="text-[#C9CDD3] leading-relaxed mb-5">
+                  {module.description}
+                </p>
+                <ul className="space-y-2 text-[#C9CDD3]">
+                  {module.bullets.map((bullet) => (
+                    <li key={bullet}>• {bullet}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
       </section>
