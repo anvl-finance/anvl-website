@@ -1,19 +1,17 @@
 export const modules = [
   {
-    name: "RMS",
-    fullName: "Risk Management System",
-    tagline: "Continuous collateral verification for floorplan lenders.",
-    positioning: "RMS is the entry point into the ANVL platform.",
+    name: "LOS",
+    fullName: "Loan Origination System",
+    tagline: "Verified inventory, accelerated underwriting.",
+    positioning: "Origination built on live, trusted asset data.",
     description:
-      "The Risk Management System (RMS) provides continuous, real-time verification of financed vehicles across dealer lots. Instead of periodic audits and manual inventory checks, RMS delivers automated visibility and exception detection.",
+      "The Loan Origination System (LOS) enables lenders to originate new floorplan facilities using RMS-verified inventory data. By grounding underwriting decisions in continuously verified collateral, LOS streamlines the approval process.",
     bullets: [
-      "Continuous BLE-based vehicle presence verification",
-      "Real-time exception alerts when inventory behavior changes",
-      "Centralized lender dashboard with lot-level visibility",
-      "Designed to integrate with existing loan systems"
-    ],
-    wedgeNarrative:
-      "RMS can be deployed without replacing a lender’s existing LMS. It improves audit reliability immediately, creating a foundation for workflow automation and origination expansion."
+      "Inventory-informed underwriting",
+      "Digital onboarding workflows",
+      "Structured credit approval framework",
+      "Designed for multi-location dealer portfolios"
+    ]
   },
 
   {
@@ -32,18 +30,20 @@ export const modules = [
   },
 
   {
-    name: "LOS",
-    fullName: "Loan Origination System",
-    tagline: "Verified inventory, accelerated underwriting.",
-    positioning: "Origination built on live, trusted asset data.",
+    name: "RMS",
+    fullName: "Risk Management System",
+    tagline: "Continuous collateral verification for floorplan lenders.",
+    positioning: "RMS is the entry point into the ANVL platform.",
     description:
-      "The Loan Origination System (LOS) enables lenders to originate new floorplan facilities using RMS-verified inventory data. By grounding underwriting decisions in continuously verified collateral, LOS streamlines the approval process.",
+      "The Risk Management System (RMS) provides continuous, real-time verification of financed vehicles across dealer lots. Instead of periodic audits and manual inventory checks, RMS delivers automated visibility and exception detection.",
     bullets: [
-      "Inventory-informed underwriting",
-      "Digital onboarding workflows",
-      "Structured credit approval framework",
-      "Designed for multi-location dealer portfolios"
-    ]
+      "Continuous BLE-based vehicle presence verification",
+      "Real-time exception alerts when inventory behavior changes",
+      "Centralized lender dashboard with lot-level visibility",
+      "Designed to integrate with existing loan systems"
+    ],
+    wedgeNarrative:
+      "RMS can be deployed without replacing a lender’s existing LMS. It improves audit reliability immediately, creating a foundation for workflow automation and origination expansion."
   }
 ];
 
@@ -52,9 +52,9 @@ export const faqGroups = [
     category: "Product",
     questions: [
       {
-        question: "What is the difference between RMS, LMS, and LOS?",
+        question: "What is the difference between LOS, LMS, and RMS?",
         answer:
-          "RMS verifies collateral in real time. LMS manages the lifecycle of floorplan loans using verified asset data. LOS supports new loan origination based on continuously verified inventory."
+          "LOS supports new loan origination based on continuously verified inventory. LMS manages the lifecycle of floorplan loans using verified asset data, RMS verifies collateral in real time."
       },
       {
         question: "Can RMS work with our existing loan system?",
