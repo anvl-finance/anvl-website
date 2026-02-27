@@ -6,6 +6,7 @@ import { toast } from 'sonner';
 
 import SiteHeader from '@/components/custom/SiteHeader';
 import SiteFooter from '@/components/custom/SiteFooter';
+import PlatformInActionSection from '@/components/custom/PlatformInActionSection';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -385,6 +386,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <PlatformInActionSection />
 
       {/* Lender Form */}
       <section id="lender-form" className="py-20 px-6">
