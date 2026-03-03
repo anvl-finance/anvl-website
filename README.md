@@ -1,6 +1,6 @@
 # ANVL Finance - Floorplan Financing, Simplified
 
-A modern, institutional-grade dual-audience website for ANVL Finance LLC, a Wyoming-registered fintech company developing an AI-verified floorplan financing platform with cryptographic NFC proof-of-presence for independent auto dealers and institutional investors.
+A modern, institutional-grade dual-audience website for ANVL Finance LLC, a Delaware-registered fintech company developing an AI-verified floorplan financing platform with cryptographic NFC proof-of-presence for independent auto dealers and institutional investors.
 
 ## Overview
 
@@ -310,11 +310,6 @@ Recommended deployment platform: Vercel
 ## License
 
 Proprietary - © 2026 ANVL Finance LLC. All Rights Reserved.
-
-## Company Information
-
-**ANVL Finance LLC**
-Registered in Wyoming, USA
 
 **Contact**
 Email: investors@anvl.finance

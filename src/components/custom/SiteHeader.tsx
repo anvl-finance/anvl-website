@@ -19,6 +19,7 @@ export default function SiteHeader() {
     { label: 'Roadmap', href: '/roadmap' },
     { label: 'Team', href: '/team' },
     { label: 'FAQ', href: '/faq' },
+    { label: 'Documents', href: '/documents' },
   ];
 
   const isActive = (href: string) => {

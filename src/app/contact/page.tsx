@@ -202,19 +202,13 @@ export default function ContactPage() {
 
       {/* Alternate Contact */}
       <section className="pb-24 px-6">
-        <div className="max-w-[900px] mx-auto grid md:grid-cols-2 gap-6">
+        <div className="max-w-[900px] mx-auto flex justify-center">
           <div className="bg-white/5 border border-white/10 rounded-lg p-6 text-center">
             <Mail className="h-6 w-6 text-[#E4312D] mx-auto mb-3" />
             <h3 className="font-semibold mb-2">Email</h3>
             <a href="mailto:contact@anvllabs.io" className="text-[#C9CDD3] hover:text-white">
               contact@anvllabs.io
             </a>
-          </div>
-
-          <div className="bg-white/5 border border-white/10 rounded-lg p-6 text-center">
-            <Globe className="h-6 w-6 text-[#E4312D] mx-auto mb-3" />
-            <h3 className="font-semibold mb-2">Headquarters</h3>
-            <p className="text-[#C9CDD3]">Wyoming, USA</p>
           </div>
         </div>
       </section>
