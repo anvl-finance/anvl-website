@@ -195,7 +195,7 @@ export default function WhitepaperPage() {
             <h2 className="text-2xl font-semibold mb-6" style={S.heading}>Abstract</h2>
             <div style={S.callout}>
               <p className="text-sm leading-relaxed" style={S.body}>
-                Floor plan lending — the primary financing mechanism for independent auto dealer inventory — relies on periodic physical verification of vehicle collateral. Existing audit methods depend on manual lot inspections, static GPS trackers, and institutional trust relationships that are incompatible with the programmatic verification demands of on-chain real-world asset (RWA) lending protocols. This paper presents ANVL&apos;s cryptographic collateral attestation protocol: an architecture that transforms physical vehicle presence into independently verifiable on-chain proof. The protocol employs disposable BLE beacon tags with HMAC-SHA256 rotating ephemeral identifiers, gateway-level Ed25519 digital signatures, a proprietary identity resolver, and a Merkle root device registry to create an end-to-end chain of trust from physical asset to on-chain record — without requiring any party to trust ANVL&apos;s servers. We describe the complete migration path from ANVL&apos;s current Web 2 infrastructure to a fully cryptographic verification stack, designed to be invisible to existing dealer customers while enabling institutional-grade RWA collateral attestation.
+                Floor plan lending, the primary financing mechanism for independent auto dealer inventory, relies on periodic physical verification of vehicle collateral. Existing audit methods depend on manual lot inspections, static GPS trackers, and institutional trust relationships that are incompatible with the programmatic verification demands of on-chain real-world asset (RWA) lending protocols. This paper presents ANVL&apos;s cryptographic collateral attestation protocol: an architecture that transforms physical vehicle presence into independently verifiable on-chain proof. The protocol employs disposable BLE beacon tags with HMAC-SHA256 rotating ephemeral identifiers, gateway-level Ed25519 digital signatures, a proprietary identity resolver, and a Merkle root device registry to create an end-to-end chain of trust from physical asset to on-chain record, without requiring any party to trust ANVL&apos;s servers. We describe the complete migration path from ANVL&apos;s current Web 2 infrastructure to a fully cryptographic verification stack, designed to be invisible to existing dealer customers while enabling institutional-grade RWA collateral attestation.
               </p>
             </div>
           </section>
@@ -212,7 +212,7 @@ export default function WhitepaperPage() {
             <div className="space-y-3 mb-4">
               {[
                 ['Temporal gaps', 'Between audits, the lender has no visibility into collateral status. A vehicle can be sold, moved, or replaced with a different unit, and the lender will not discover this until the next site visit.'],
-                ['Human error and fraud susceptibility', 'Manual VIN checks are tedious and error-prone. Audit fraud — where dealers stage vehicles or present falsified documentation — is a known and persistent problem in the industry.'],
+                ['Human error and fraud susceptibility', 'Manual VIN checks are tedious and error-prone. Audit fraud, where dealers stage vehicles or present falsified documentation, is a known and persistent problem in the industry.'],
                 ['Cost at scale', 'Physical audits require personnel, travel, and scheduling coordination. For lenders with portfolios spanning hundreds of dealer locations, verification cost is a material line item.'],
                 ['Incompatibility with programmatic finance', 'On-chain lending protocols, decentralized credit pools, and RWA tokenization platforms require real-time, machine-readable proof of collateral. A PDF audit report uploaded 30 days after the fact does not satisfy this requirement.'],
               ].map(([title, desc]) => (
@@ -225,7 +225,7 @@ export default function WhitepaperPage() {
               ))}
             </div>
             <p className="text-sm" style={S.body}>
-              The gap between what traditional lenders accept and what on-chain protocols require is not incremental — it is structural. Closing it demands a new verification architecture that produces cryptographic proof at the physical layer and carries that proof, intact, to the chain.
+              The gap between what traditional lenders accept and what on-chain protocols require is not incremental, it is structural. Closing it demands a new verification architecture that produces cryptographic proof at the physical layer and carries that proof, intact, to the chain.
             </p>
           </section>
 
@@ -260,7 +260,7 @@ On-Chain Audit Layer (lender transparency)`}
               Disposable BLE tags are affixed to each vehicle on the dealer&apos;s lot. These tags broadcast continuously. A Blecon-powered gateway on-site detects tag presence and relays observations to Blecon&apos;s cloud infrastructure over cellular. ANVL ingests the data from Blecon Cloud, stores it in its own database, and writes summary records to an on-chain audit layer visible to lenders.
             </p>
             <p className="text-sm mb-4" style={S.body}>
-              For ANVL&apos;s initial customer base — independent dealers and traditional lenders such as AFC and Kinetic Advantage — this architecture is effective. Dealers see a real-time dashboard showing which vehicles are on-lot, when they were last detected, and whether any have gone missing. Lenders get continuous visibility without dispatching field auditors. The value proposition is clear and the user experience is straightforward.
+              For ANVL&apos;s initial customer base, independent dealers and traditional lenders such as AFC and Kinetic Advantage, this architecture is effective. Dealers see a real-time dashboard showing which vehicles are on-lot, when they were last detected, and whether any have gone missing. Lenders get continuous visibility without dispatching field auditors. The value proposition is clear and the user experience is straightforward.
             </p>
             <p className="text-sm mb-4" style={S.body}>
               However, this architecture contains structural limitations that become visible when subjected to the verification standards of on-chain lending:
@@ -293,7 +293,7 @@ On-Chain Audit Layer (lender transparency)`}
             <div className="space-y-3 mb-4">
               {[
                 ['Does the collateral exist?', 'There must be a verifiable record that a specific physical asset has been registered and is associated with a specific loan obligation.'],
-                ['Is the collateral where it should be?', 'There must be continuous, time-stamped proof that the asset is physically present at the declared location — not a single point-in-time check, but an ongoing stream of attestations.'],
+                ['Is the collateral where it should be?', 'There must be continuous, time-stamped proof that the asset is physically present at the declared location, not a single point-in-time check, but an ongoing stream of attestations.'],
                 ['Can I verify this without trusting the originator?', 'The proof must be independently checkable. If the verification relies on trusting ANVL\'s API, database, or personnel, it fails the decentralization requirement.'],
               ].map(([title, desc]) => (
                 <div key={title} className="flex gap-3" style={S.body}>
@@ -313,13 +313,13 @@ On-Chain Audit Layer (lender transparency)`}
           <section id="disposable-tag-model" className="mb-16 scroll-mt-20">
             <h2 className="text-2xl font-semibold mb-6" style={S.heading}>4. The Disposable Tag Model — Physical Security Through Economics</h2>
             <p className="text-sm mb-4" style={S.body}>
-              A critical design constraint of the ANVL system is that tags must be inexpensive and physically disposable. This is not a cost optimization — it is a security architecture decision.
+              A critical design constraint of the ANVL system is that tags must be inexpensive and physically disposable. This is not a cost optimization, it is a security architecture decision.
             </p>
             <p className="text-sm mb-4" style={S.body}>
               An expensive, reusable smart tag creates a perverse incentive: if the tag has value, a dealer can detach it from a sold vehicle and re-attach it to a different one (or to nothing at all) to maintain the appearance of collateral presence. The tag becomes a transferable token of verification rather than a physical binding.
             </p>
             <p className="text-sm mb-4" style={S.body}>
-              ANVL&apos;s approach inverts this. Tags are priced in the $3–8 range at volume. They are affixed to the vehicle with tamper-evident adhesive. When a tag is physically removed, it stops broadcasting — this cessation of signal is itself an alert condition. The economics of the tag ensure that replacing, moving, or reusing tags is operationally impractical at scale.
+              ANVL&apos;s approach inverts this. Tags are priced in the $3–8 range at volume. They are affixed to the vehicle with tamper-evident adhesive. When a tag is physically removed, it stops broadcasting. This cessation of signal is itself an alert condition. The economics of the tag ensure that replacing, moving, or reusing tags is operationally impractical at scale.
             </p>
 
             <h3 className="text-lg font-semibold mt-8 mb-4" style={S.heading}>Ephemeral Identity Protocol</h3>
@@ -332,7 +332,7 @@ On-Chain Audit Layer (lender transparency)`}
               </pre>
             </div>
             <p className="text-sm mb-4" style={S.body}>
-              An observer who intercepts the BLE broadcast sees only the current ephemeral identifier — an 8-byte value that appears random and changes within minutes. Without the Identity Key, the EID cannot be linked to any permanent identity. This provides protection against passive surveillance and replay attacks. A captured EID is useless after its rotation window expires.
+              An observer who intercepts the BLE broadcast sees only the current ephemeral identifier, an 8-byte value that appears random and changes within minutes. Without the Identity Key, the EID cannot be linked to any permanent identity. This provides protection against passive surveillance and replay attacks. A captured EID is useless after its rotation window expires.
             </p>
             <p className="text-sm" style={S.body}>
               Critically, the tag itself performs no signing and holds no private key material beyond the Identity Key used for EID generation. The tag&apos;s role is limited to two functions: proving physical presence through continuous broadcast, and providing identity through ephemeral rotation. All cryptographic attestation occurs at the gateway layer.
@@ -480,7 +480,7 @@ Signature:
               <strong style={S.heading}>EID inclusion:</strong> The ephemeral identifier is included in the on-chain record despite being expired by the time the record is written. This enables an additional verification path: an auditor with authorized resolver access can independently confirm that the EID, when processed through the resolver for the given timestamp, produces the claimed VIN-hash.
             </p>
             <p className="text-sm" style={S.body}>
-              <strong style={S.heading}>Heartbeat model:</strong> Rather than writing every individual gateway scan to chain, ANVL aggregates observations into periodic heartbeat attestations — one per vehicle per time window (configurable, typically hourly). Each heartbeat summarizes: &quot;this vehicle was continuously observed during this period.&quot; This reduces on-chain storage costs while preserving the attestation guarantee. Individual scan records remain available in ANVL&apos;s off-chain database for detailed audit queries.
+              <strong style={S.heading}>Heartbeat model:</strong> Rather than writing every individual gateway scan to chain, ANVL aggregates observations into periodic heartbeat attestations, one per vehicle per time window (configurable, typically hourly). Each heartbeat summarizes: &quot;this vehicle was continuously observed during this period.&quot; This reduces on-chain storage costs while preserving the attestation guarantee. Individual scan records remain available in ANVL&apos;s off-chain database for detailed audit queries.
             </p>
           </section>
 
@@ -520,7 +520,7 @@ Signature:
               Periodically (daily), ANVL computes a Merkle root over the entire device registry and publishes it to Vara. The on-chain footprint is minimal: a single 32-byte hash plus a timestamp.
             </p>
             <p className="text-sm mb-4" style={S.body}>
-              During an audit, ANVL provides Merkle proofs off-chain. A verifier checks the proof against the on-chain root: if the proof validates, the device-to-VIN mapping was committed before the attestation in question occurred. ANVL cannot retroactively alter which tag maps to which vehicle without causing the Merkle root to change — which would be visible on-chain.
+              During an audit, ANVL provides Merkle proofs off-chain. A verifier checks the proof against the on-chain root: if the proof validates, the device-to-VIN mapping was committed before the attestation in question occurred. ANVL cannot retroactively alter which tag maps to which vehicle without causing the Merkle root to change, which would be visible on-chain.
             </p>
             <p className="text-sm" style={S.body}>
               This approach is standard practice in RWA protocols. Centrifuge, Goldfinch, and similar platforms all employ variations of Merkle commitments for off-chain data integrity anchoring.
@@ -576,7 +576,7 @@ Signature:
                 End-to-end guarantee:
               </p>
               <p className="text-sm mt-2" style={S.body}>
-                No step in this verification path requires trusting ANVL&apos;s servers, database, or personnel. Every claim — the observation, the identity mapping, and the device registration — is independently verifiable using on-chain data and cryptographic proofs. This is the fundamental difference between ANVL&apos;s Web 3 attestation protocol and conventional monitoring solutions.
+                No step in this verification path requires trusting ANVL&apos;s servers, database, or personnel. Every claim, the observation, the identity mapping, and the device registration, is independently verifiable using on-chain data and cryptographic proofs. This is the fundamental difference between ANVL&apos;s Web 3 attestation protocol and conventional monitoring solutions.
               </p>
             </div>
           </section>
@@ -650,7 +650,7 @@ Signature:
           <section id="post-quantum" className="mb-16 scroll-mt-20">
             <h2 className="text-2xl font-semibold mb-6" style={S.heading}>11. Post-Quantum Readiness</h2>
             <p className="text-sm mb-4" style={S.body}>
-              Ed25519, like all elliptic curve cryptography, is vulnerable to quantum computing attacks via Shor&apos;s algorithm. While practical quantum computers capable of breaking Ed25519 are not expected in the immediate term, floor plan loan durations and institutional planning horizons extend over years — and on-chain records are immutable once written.
+              Ed25519, like all elliptic curve cryptography, is vulnerable to quantum computing attacks via Shor&apos;s algorithm. While practical quantum computers capable of breaking Ed25519 are not expected in the immediate term, floor plan loan durations and institutional planning horizons extend over years, and on-chain records are immutable once written.
             </p>
             <p className="text-sm mb-4" style={S.body}>
               ANVL&apos;s architecture is designed for algorithm agility. The signing and verification components are abstracted behind interfaces that are algorithm-independent. The planned migration path is:
