@@ -16,6 +16,18 @@ const documents = [
       'Technical architecture for ANVL\'s transition from centralized verification to end-to-end cryptographic attestation. Covers disposable tag economics, gateway-level Ed25519 signing, HMAC-SHA256 ephemeral identity resolution, Merkle root device registry, and the complete independent verification path for RWA lending protocols.',
     tags: ['Protocol Design', 'Cryptography', 'RWA'],
   },
+  {
+    title: 'From Prototype to Production',
+    subtitle: 'ANVL\'s Engineering and Compliance Roadmap for Financial-Grade Infrastructure',
+    href: '/documents/production-readiness',
+    date: 'March 2026',
+    version: '1.0',
+    readTime: '20 min',
+    status: 'current' as const,
+    description:
+      'A technical architecture document covering the transition from ANVL\'s Replit prototype to a production-grade, SOC 2-compliant system. Includes full stack documentation, gap analysis, AWS infrastructure design, the Scout/Smith/Anvil AI development pipeline, GLBA compliance roadmap, integration plan for Blackbook, KYB, and Vara, and a phased migration timeline.',
+    tags: ['Engineering', 'Compliance', 'SOC 2', 'GLBA'],
+  },
   // Future documents go here:
   // {
   //   title: 'ANVL Token Economics',

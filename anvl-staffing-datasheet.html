@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ANVL Finance — Engineering Staffing Model</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #ffffff;
+      color: #1a1a2e;
+      font-size: 10pt;
+      line-height: 1.5;
+    }
+
+    .page {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 48px 40px;
+    }
+
+    /* ── Header ── */
+    .header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      border-bottom: 2px solid #e4312d;
+      padding-bottom: 16px;
+      margin-bottom: 28px;
+    }
+
+    .header-left h1 {
+      font-size: 18pt;
+      font-weight: 700;
+      color: #0d1b2a;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+    }
+
+    .header-left p {
+      font-size: 9.5pt;
+      color: #6b7a8d;
+      margin-top: 4px;
+    }
+
+    .header-right {
+      text-align: right;
+      font-size: 8.5pt;
+      color: #6b7a8d;
+      line-height: 1.8;
+      flex-shrink: 0;
+      margin-left: 24px;
+    }
+
+    .header-right .confidential {
+      display: inline-block;
+      background: #fef2f2;
+      color: #e4312d;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 7.5pt;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    /* ── Section titles ── */
+    .section {
+      margin-bottom: 24px;
+    }
+
+    .section-title {
+      font-size: 8pt;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #e4312d;
+      margin-bottom: 10px;
+    }
+
+    /* ── Tables ── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 9pt;
+    }
+
+    thead tr {
+      background: #f4f6f9;
+    }
+
+    th {
+      text-align: left;
+      font-weight: 600;
+      font-size: 8pt;
+      color: #0d1b2a;
+      padding: 7px 10px;
+      border-bottom: 1px solid #dde2ea;
+    }
+
+    td {
+      padding: 7px 10px;
+      border-bottom: 1px solid #eef0f4;
+      vertical-align: top;
+      color: #2d3748;
+    }
+
+    td.label {
+      font-weight: 600;
+      color: #0d1b2a;
+      white-space: nowrap;
+    }
+
+    td.muted {
+      color: #6b7a8d;
+      font-size: 8.5pt;
+    }
+
+    td .tag {
+      display: inline-block;
+      background: #fef2f2;
+      color: #e4312d;
+      font-size: 7.5pt;
+      font-weight: 600;
+      padding: 1px 6px;
+      border-radius: 3px;
+      white-space: nowrap;
+    }
+
+    /* ── Timeline ── */
+    .timeline {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .timeline-block {
+      border: 1px solid #dde2ea;
+      border-radius: 6px;
+      padding: 12px 14px;
+    }
+
+    .timeline-block .phase {
+      font-size: 8pt;
+      font-weight: 700;
+      color: #0d1b2a;
+      margin-bottom: 2px;
+    }
+
+    .timeline-block .hires {
+      font-size: 7.5pt;
+      color: #e4312d;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .timeline-block ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .timeline-block ul li {
+      font-size: 8.5pt;
+      color: #4a5568;
+      padding: 1.5px 0;
+      padding-left: 10px;
+      position: relative;
+    }
+
+    .timeline-block ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: #aab1b9;
+    }
+
+    /* ── Principles ── */
+    .principles {
+      border-left: 3px solid #e4312d;
+      padding-left: 14px;
+    }
+
+    .principles p {
+      font-size: 9pt;
+      color: #4a5568;
+      margin-bottom: 6px;
+      line-height: 1.6;
+    }
+
+    .principles p:last-child {
+      margin-bottom: 0;
+    }
+
+    .principles strong {
+      color: #0d1b2a;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      margin-top: 32px;
+      padding-top: 12px;
+      border-top: 1px solid #dde2ea;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 7.5pt;
+      color: #aab1b9;
+    }
+
+    /* ── Print ── */
+    @media print {
+      body { background: #fff; }
+      .page { padding: 32px 40px; }
+      @page {
+        margin: 0.5in;
+        size: letter;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="header-left">
+        <h1>Engineering Staffing Model</h1>
+        <p>ANVL Finance LLC &mdash; Hiring Roadmap for Production-Grade Operations</p>
+      </div>
+      <div class="header-right">
+        <div class="confidential">Confidential</div><br/>
+        March 2026<br/>
+        v1.0
+      </div>
+    </div>
+
+    <!-- Current Team -->
+    <div class="section">
+      <div class="section-title">Current Team</div>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:18%">Role</th>
+            <th style="width:22%">Env Access</th>
+            <th>Responsibilities</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="label">CTO</td>
+            <td>Prototype + Production</td>
+            <td class="muted">Architecture, security design, deployment approvals, vendor evaluations, pipeline oversight, production incident response</td>
+          </tr>
+          <tr>
+            <td class="label">CEO</td>
+            <td>Prototype only</td>
+            <td class="muted">Product direction, feature prototyping, customer demonstration preparation</td>
+          </tr>
+          <tr>
+            <td class="label">CSO</td>
+            <td>Prototype only</td>
+            <td class="muted">Sales workflow validation, CRM and territory feature input, customer feedback loop</td>
+          </tr>
+          <tr>
+            <td class="label">Junior Developer</td>
+            <td>Prototype only</td>
+            <td class="muted">Feature development, UI work, prototype velocity, pipeline output review under mid-level supervision</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Required Hires -->
+    <div class="section">
+      <div class="section-title">Required Hires</div>
+      <table>
+        <thead>
+          <tr>
+            <th style="width:28%">Role</th>
+            <th style="width:20%">When</th>
+            <th>Owns</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="label">DevOps / Platform Engineer</td>
+            <td><span class="tag">Month 1 — critical path</span></td>
+            <td class="muted">AWS buildout, CI/CD pipeline, secrets management, DR procedures, on-call rotation, environment separation</td>
+          </tr>
+          <tr>
+            <td class="label">Fractional CISO</td>
+            <td><span class="tag">Month 1 — immediate</span></td>
+            <td class="muted">GLBA risk assessment, SOC 2 audit program ownership, Vanta deployment, vendor risk reviews, incident response plan</td>
+          </tr>
+          <tr>
+            <td class="label">Mid-Level Full-Stack Engineer</td>
+            <td><span class="tag">Month 1–2</span></td>
+            <td class="muted">Integration ownership and maintenance, security control implementation, junior developer review, financial logic test coverage</td>
+          </tr>
+          <tr>
+            <td class="label">Firmware / Embedded Engineer</td>
+            <td><span class="tag">Phase 2 (post-launch)</span></td>
+            <td class="muted">Ed25519 gateway signing, EID resolver deployment, tag provisioning at scale, cryptographic attestation protocol</td>
+          </tr>
+          <tr>
+            <td class="label">Full-Time CISO</td>
+            <td><span class="tag">Month 9–15</span></td>
+            <td class="muted">Transition from fractional engagement once SOC 2 Type II enters evidence collection window</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Timeline -->
+    <div class="section">
+      <div class="section-title">Phased Hiring Timeline</div>
+      <div class="timeline">
+        <div class="timeline-block">
+          <div class="phase">Month 1</div>
+          <div class="hires">DevOps + Fractional CISO</div>
+          <ul>
+            <li>AWS infrastructure live; repo separation enforced</li>
+            <li>GLBA risk assessment initiated</li>
+            <li>Vanta deployed and connected to AWS + GitHub</li>
+          </ul>
+        </div>
+        <div class="timeline-block">
+          <div class="phase">Month 1–2</div>
+          <div class="hires">Mid-Level Full-Stack Engineer</div>
+          <ul>
+            <li>Rate limiting, MFA, audit logging implemented</li>
+            <li>KYB and Blackbook integrations owned end-to-end</li>
+            <li>Junior developer review cadence established</li>
+          </ul>
+        </div>
+        <div class="timeline-block">
+          <div class="phase">Month 3 — Production Launch</div>
+          <div class="hires">No new hire</div>
+          <ul>
+            <li>SOC 2 Type I audit completed</li>
+            <li>First customer environment provisioned</li>
+            <li>SOC 2 Type II observation period begins</li>
+          </ul>
+        </div>
+        <div class="timeline-block">
+          <div class="phase">Phase 2 (post-launch)</div>
+          <div class="hires">Firmware / Embedded Engineer</div>
+          <ul>
+            <li>Cryptographic attestation moves to production hardware</li>
+            <li>Ed25519 signing and Merkle registry live</li>
+            <li>On-chain attestation via Vara Network</li>
+          </ul>
+        </div>
+        <div class="timeline-block" style="grid-column: 1 / -1;">
+          <div class="phase">Month 9–15</div>
+          <div class="hires">Full-Time CISO / Compliance Lead</div>
+          <ul>
+            <li>SOC 2 Type II report issued</li>
+            <li>Compliance transitions from build project to ongoing operations</li>
+            <li>Quarterly access reviews and drift detection established</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Key Principles -->
+    <div class="section">
+      <div class="section-title">Key Principles</div>
+      <div class="principles">
+        <p><strong>Production access is restricted.</strong> CTO and DevOps only. Break-glass procedures for emergency access. All production access is logged and reviewed. Non-technical team members retain prototype access only. This is a SOC 2 requirement, not a preference.</p>
+        <p><strong>The AI pipeline is a force multiplier, not a headcount replacement.</strong> The Scout/Smith/Anvil pipeline handles approximately 90% of feature development. Human engineers own financial logic correctness, security response, integration maintenance, and production incidents — the 10% that carries regulatory liability.</p>
+        <p><strong>Integration count drives headcount.</strong> One mid-level engineer can own two to three active integrations. Each integration is a maintenance commitment, a compliance obligation, and a failure domain. Integration growth beyond five triggers a second mid-level hire.</p>
+        <p><strong>Architecture is owned by the CTO + DevOps pairing</strong> at this stage. A dedicated architect role is not warranted until ANVL has three or more product teams building in parallel, or until Phase 2 hardware development begins.</p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+      <span>&copy; 2026 ANVL Finance LLC. All Rights Reserved.</span>
+      <span>Confidential &mdash; Intended for authorized recipients only.</span>
+    </div>
+
+  </div>
+</body>
+</html>
