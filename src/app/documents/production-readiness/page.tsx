@@ -17,6 +17,7 @@ const tocSections = [
   { id: 'roles', label: '8. Roles & Responsibilities' },
   { id: 'migration-plan', label: '9. Migration Plan' },
   { id: 'ongoing-process', label: '10. Ongoing Process' },
+  { id: 'appendix-a', label: 'Appendix A: Replit Dependencies' },
 ];
 
 /* ─── Reusable styles ─── */
