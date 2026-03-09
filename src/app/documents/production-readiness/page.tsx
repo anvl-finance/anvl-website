@@ -275,28 +275,6 @@ export default function ProductionReadinessPage() {
               ))}
             </div>
 
-            <h3 className="text-lg font-semibold mb-4" style={S.heading}>Replit-Specific Dependencies</h3>
-            <p className="text-sm mb-4" style={S.body}>
-              The following components are tied to the Replit platform and must be removed or replaced before production deployment:
-            </p>
-            <div style={S.codeBlock}>
-              <pre style={{ margin: 0 }}>
-{`// Dev dependencies — Replit Vite plugins (remove entirely)
-@replit/vite-plugin-cartographer
-@replit/vite-plugin-dev-banner
-@replit/vite-plugin-runtime-error-modal
-
-// Server integrations — Replit-hosted AI/media services (replace with cloud-native)
-server/replit_integrations/audio/
-server/replit_integrations/batch/
-server/replit_integrations/chat/
-server/replit_integrations/image/
-client/replit_integrations/audio/
-
-// Session store — in-memory, not safe for production (replace with Redis)
-memorystore`}
-              </pre>
-            </div>
           </section>
 
           {/* ─── Section 2: Production Requirements ─── */}
@@ -894,6 +872,32 @@ wip:      Work in progress — Scout ignores this prefix entirely`}
               <p className="text-sm" style={S.body}>
                 <strong style={S.heading}>Long-term optionality:</strong> If the Replit prototyping model is retired after initial product stabilization, the Scout/Smith/Anvil pipeline can be repurposed as a standard quality gate on a single repository — providing automated code review, test enforcement, and staged deployment regardless of source structure. The pipeline&apos;s value is architectural, not dependent on the two-repository model.
               </p>
+            </div>
+          </section>
+
+          {/* ─── Appendix A ─── */}
+          <section id="appendix-a" className="mb-16 scroll-mt-20">
+            <h2 className="text-2xl font-semibold mb-6" style={S.heading}>Appendix A: Replit-Specific Dependencies</h2>
+            <p className="text-sm mb-4" style={S.body}>
+              The following components are tied to the Replit platform and must be removed or replaced before production deployment:
+            </p>
+            <div style={S.codeBlock}>
+              <pre style={{ margin: 0 }}>
+{`// Dev dependencies — Replit Vite plugins (remove entirely)
+@replit/vite-plugin-cartographer
+@replit/vite-plugin-dev-banner
+@replit/vite-plugin-runtime-error-modal
+
+// Server integrations — Replit-hosted AI/media services (replace with cloud-native)
+server/replit_integrations/audio/
+server/replit_integrations/batch/
+server/replit_integrations/chat/
+server/replit_integrations/image/
+client/replit_integrations/audio/
+
+// Session store — in-memory, not safe for production (replace with Redis)
+memorystore`}
+              </pre>
             </div>
           </section>
 
