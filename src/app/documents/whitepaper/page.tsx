@@ -187,6 +187,9 @@ export default function WhitepaperPage() {
             <p className="text-lg sm:text-xl" style={S.muted}>
               A Protocol for Verifiable Physical Asset Presence in On-Chain Lending
             </p>
+            <p className="text-sm mt-3 italic" style={S.dim}>
+              Built for floorplan lenders by floorplan lenders
+            </p>
             <div className="mt-8 h-px" style={{ backgroundColor: '#1E3154' }} />
           </div>
 
