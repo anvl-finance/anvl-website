@@ -121,7 +121,7 @@ export default function HomePage() {
               Floorplan. Simplified.
             </h1>
             <p className="text-sm italic text-[#6B7A8D] mb-6">
-              Built for floorplan lenders by floorplan lenders
+              Built by floorplanners for floorplanners
             </p>
             <p className="text-lg sm:text-xl text-[#C9CDD3] mb-10 leading-relaxed max-w-3xl mx-auto">
               ANVL is a SaaS risk-tech and blockchain infrastructure layer for floorplan lenders:
