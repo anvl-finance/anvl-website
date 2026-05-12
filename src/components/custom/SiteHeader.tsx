@@ -60,14 +60,18 @@ export default function SiteHeader() {
               );
             })}
 
-            <Link href="/contact">
+            <Link href="/contact" className={linkClass(isActive('/contact'))}>
+              Contact
+            </Link>
+
+            <a href="https://app.anvllabs.io">
               <Button
                 size="sm"
                 className="bg-[#E4312D] hover:bg-[#E4312D]/90 text-white"
               >
-                Contact
+                Login
               </Button>
-            </Link>
+            </a>
           </nav>
 
           {/* Mobile toggle */}
@@ -107,14 +111,26 @@ export default function SiteHeader() {
               );
             })}
 
-            <Link href="/contact" onClick={() => setMobileOpen(false)}>
+            <Link
+              href="/contact"
+              className={
+                isActive('/contact')
+                  ? 'block text-sm font-medium text-white'
+                  : 'block text-sm font-medium text-[#AAB1B9]'
+              }
+              onClick={() => setMobileOpen(false)}
+            >
+              Contact
+            </Link>
+
+            <a href="https://app.anvllabs.io" className="block">
               <Button
                 size="sm"
                 className="w-full bg-[#E4312D] hover:bg-[#E4312D]/90 text-white"
               >
-                Contact
+                Login
               </Button>
-            </Link>
+            </a>
           </div>
         </div>
       )}
