@@ -1,7 +1,6 @@
 'use client';
 
 import { Linkedin } from 'lucide-react';
-import Link from 'next/link';
 
 import SiteHeader from '@/components/custom/SiteHeader';
 import SiteFooter from '@/components/custom/SiteFooter';
@@ -36,6 +35,13 @@ export default function TeamPage() {
         'Founder and operator focused on strategy, partnerships, and execution across floorplan finance, risk management, and product commercialization.',
       linkedin: 'https://www.linkedin.com/in/gjorewicz/',
     },
+    {
+      name: 'David Horan',
+      title: 'Chief Financial Officer',
+      credentials:
+        'CFO with deep roots in automotive floorplan finance. Scaled NextGear Capital into the largest independent floorplan lender and brings capital-structure expertise and financial infrastructure insight purpose-built for this market.',
+      linkedin: 'https://www.linkedin.com/in/davidhoran-cpa/',
+    },
   ];
 
   const advisors = [
@@ -62,6 +68,13 @@ export default function TeamPage() {
           </p>
         </div>
       </section>
+
+      {/* Welcome banner */}
+      <div className="bg-[#E4312D] px-6 py-3 text-center">
+        <p className="text-white font-medium text-sm tracking-wide">
+          ANVL welcomes Dave Horan to the management team
+        </p>
+      </div>
 
       {/* Founders */}
       <section className="pb-16 px-6">
