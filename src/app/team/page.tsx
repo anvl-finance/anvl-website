@@ -37,7 +37,7 @@ export default function TeamPage() {
     },
     {
       name: 'David Horan',
-      title: 'Chief Financial Officer',
+      title: 'Co-Founder',
       credentials:
         'CFO with deep roots in automotive floorplan finance. Scaled NextGear Capital into the largest independent floorplan lender and brings capital-structure expertise and financial infrastructure insight purpose-built for this market.',
       linkedin: 'https://www.linkedin.com/in/davidhoran-cpa/',
@@ -77,7 +77,7 @@ export default function TeamPage() {
       </div>
 
       {/* Founders */}
-      <section className="pb-16 px-6">
+      <section className="pb-16 px-6 pt-12">
         <div className="max-w-[1160px] mx-auto">
           <h2 className="text-2xl font-semibold mb-8">Founders</h2>
 
